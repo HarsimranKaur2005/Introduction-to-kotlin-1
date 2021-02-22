@@ -1,16 +1,12 @@
 package com.example.intro_to_kotlin_3
 
-//class question1 {
-//    fun hello(){
-//        println("hello newers")
-//    }
-//
-//}
+class question1{
+    var msg = "this is class question 1"
 
-//class ex{
-//    fun main() {
-//        var ques1 = question1()
-//        ques1.hello()
-//    }
-//
-//}
+    fun printMsg(){
+        println(msg)
+    }
+}
+
+class test {
+}

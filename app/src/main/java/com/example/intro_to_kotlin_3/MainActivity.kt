@@ -2,6 +2,7 @@ package com.example.intro_to_kotlin_3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import java.lang.Exception
 import java.util.zip.ZipEntry
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +12,14 @@ class MainActivity : AppCompatActivity() {
 
 
         println("****** QUESTION 1 *******")
-//        var q1= ex()
-//        q1.main()
+        //class not found exception
+        try {
+            Class.forName("question1")
+        }
+        catch (e: Exception)
+        {e.printStackTrace()}
+
+
 
 
         //WAP to create singleton class.
