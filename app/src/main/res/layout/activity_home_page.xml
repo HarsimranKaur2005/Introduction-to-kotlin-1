@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/teal_700"
+    android:padding="17dp"
+    tools:context=".homePage">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/tv_username"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/tv_email"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/tv_phone"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/colorAccent"
+        android:layout_marginTop="15dp"
+        android:background="@color/teal_700"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter URL"
+            android:ems="10"
+            android:inputType=""
+            android:textSize="20sp"
+            android:id="@+id/et_url"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_ImplicitIntent"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Implicit intent"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_permission"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="permission"
+        android:layout_gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
+
+</LinearLayout>
