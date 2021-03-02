@@ -18,7 +18,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:text="Linear Layout"
         android:textSize="20dp"/>
@@ -27,7 +27,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:text="Relative Layout"
         android:textSize="20dp"/>
@@ -36,7 +36,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:text="constraint Layout"
         android:textSize="20dp"/>
