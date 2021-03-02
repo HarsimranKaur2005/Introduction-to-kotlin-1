@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Relative"
+    android:background="@drawable/gradient"
+    >
+
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="290dp"
+    android:background="@color/white"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="40dp"
+    >
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/item"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:id="@+id/icecream"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageview"
+        android:text="Ice Cream Sundae"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="15dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/mall"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageview"
+        android:text="145 Mall of India"
+        android:textSize="15dp"
+        android:layout_marginTop="35dp"
+        android:padding="15dp"
+        />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageview"
+        android:layout_marginTop="60dp"
+        android:numStars="7"
+        android:clickable="true"
+        android:rating="4"
+        android:padding="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-67dp"
+        android:layout_toRightOf="@+id/mall"
+        android:layout_below="@+id/imageview"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="60dp"
+        android:text="520 reviews" />
+
+
+</RelativeLayout>
+<!--    </androidx.cardview.widget.CardView>-->
+</RelativeLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Foodie App"
+        android:textSize="35dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/round_button"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:background="@drawable/round_button"
+        android:textSize="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        >
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="Sign-in"
+        android:textColor="@color/teal_200"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:padding="12dp"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Don't have an account?"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:textColor="@color/white"
+    android:textSize="17dp"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign-Up"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        />
+</LinearLayout>
