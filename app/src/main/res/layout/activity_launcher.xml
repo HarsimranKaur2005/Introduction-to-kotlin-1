@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Launcher"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <Button
+        android:id="@+id/btn_room"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Room"
+       android:layout_marginTop="180dp"
+        android:textSize="30dp"
+        />
+    <Button
+        android:id="@+id/btn_contentProvider"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="ContentProvider"
+        android:layout_marginTop="80dp"
+        android:textSize="25dp"
+        />
+
+
+
+</LinearLayout>
