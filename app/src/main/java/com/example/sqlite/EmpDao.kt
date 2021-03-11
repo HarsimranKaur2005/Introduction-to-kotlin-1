@@ -3,6 +3,7 @@ package com.example.sqlite
 import android.os.Build.ID
 import androidx.room.*
 
+
 @Dao
 interface EmpDao {
 
@@ -12,8 +13,8 @@ interface EmpDao {
     @Insert
     fun insertEmployee(empEntity: EmpEntity)
 
-    @Query("UPDATE employee_table SET name = :Name, address = :address, phone =:phone WHERE id = :ID")
-    fun updateEmployee(ID: Int, Name:String, address:String, phone:String)
+    @Update
+    fun updateEmployee(empEntity: EmpEntity)
 
     @Delete
     fun deleteEmployee(empEntity: EmpEntity)

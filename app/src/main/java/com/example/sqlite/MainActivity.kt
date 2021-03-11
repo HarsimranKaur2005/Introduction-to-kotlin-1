@@ -2,6 +2,7 @@ package com.example.sqlite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity(),adapter.OnItemClickListener {
 
                 recyclerView.apply {
                     runOnUiThread {
-                        Myadapter = adapter(list)
+                        Myadapter = adapter(this@MainActivity, list)
                         recyclerView.adapter = Myadapter
                         Toast.makeText(this@MainActivity, "Data instered successfully", Toast.LENGTH_SHORT).show()
                         empName.text.clear()
@@ -74,9 +75,17 @@ class MainActivity : AppCompatActivity(),adapter.OnItemClickListener {
 
     }
 
-    override fun onItemClickUpdate(position: Int, name:String, address:String, phone:String) {
+    override fun onItemClickUpdate(position: Int, name:String, address:String, phone:String, id:Int) {
+
+        Log.i("Data", "=== *** Name: $name, Contact: $phone, Address: $address ===")
         var database = DatabaseBuilder.getInstance(context = this)
-        database.empDao().updateEmployee(position, name,address,phone)
+        database.empDao().updateEmployee(
+                EmpEntity( id = id,
+                        name = name,
+                        address = address,
+                        phone = phone
+
+        ))
 
 
     }
