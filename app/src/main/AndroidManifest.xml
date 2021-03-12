@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thread">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Thread">
-        <activity android:name=".Question2"></activity>
+        <activity android:name=".Question3"></activity>
+        <activity android:name=".Question2" />
         <activity android:name=".Question1" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,15 +24,16 @@
 
         <receiver android:name=".PhoneStateReciever">
             <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE"/>
+                <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".BatteryReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BATTERY_CHANGED"/>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
             </intent-filter>
         </receiver>
+        <service android:name=".MyService"/>
+        <service android:name=".BoundService"/>
     </application>
 
 </manifest>

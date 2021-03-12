@@ -14,18 +14,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACKGROUND TASK 1"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+
         <Button
             android:id="@+id/ques1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="60dp"
             android:text="Thread Methods" />
 
         <Button
             android:id="@+id/ques2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:text="Broadcast Receiver" />
+
+        <Button
+            android:id="@+id/ques3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Music Player" />
+        <Button
+            android:id="@+id/ques4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Bound service" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

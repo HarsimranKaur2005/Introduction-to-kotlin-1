@@ -10,12 +10,14 @@ import android.widget.TextView
 class BatteryReceiver() : BroadcastReceiver() {
 
     lateinit var tv: TextView
-    var level = "%"
+
+    //receivinf textview from question2
     constructor( tv:TextView):this(){
         this.tv = tv
 
     }
     override fun onReceive(context: Context?, intent: Intent?) {
+        //get battery level
         var percentage = intent!!.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
 
        // tv.setText(percentage)
