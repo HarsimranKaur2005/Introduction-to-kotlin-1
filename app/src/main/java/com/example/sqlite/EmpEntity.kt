@@ -11,9 +11,9 @@ data class EmpEntity (
     var id:Int=0 ,
 
      @ColumnInfo
-     var name:String,
-      var address:String,
-    var phone:String
+     var name:String?=null,
+      var address:String?=null,
+    var phone:String?=null
 ){
 }
 

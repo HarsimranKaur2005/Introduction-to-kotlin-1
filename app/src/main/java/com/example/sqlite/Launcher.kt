@@ -22,7 +22,8 @@ class Launcher : AppCompatActivity() {
         }
 
         btnContentProvider.setOnClickListener(){
-
+            var intent = Intent(applicationContext, ContentProvider::class.java)
+            startActivity(intent)
         }
     }
 }
