@@ -77,11 +77,12 @@ class adapter(var context: Context, var list: ArrayList<EmpEntity>):RecyclerView
 
                mylistener?.onItemClickUpdate(position, nameupdated, addrUpdated, phoneUpdated, empID)
 
-
+                //update ui
                 holder.editItemRow.visibility=View.GONE
                 holder.itemrow.visibility = View.VISIBLE
                 Toast.makeText(context,"Data updated sucessfully!!",Toast.LENGTH_SHORT).show()
 
+                //reflect it in ui
                list[position]=EmpEntity(empID, nameupdated, addrUpdated, phoneUpdated)
                 notifyDataSetChanged()
 

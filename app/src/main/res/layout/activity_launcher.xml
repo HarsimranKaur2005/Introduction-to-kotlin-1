@@ -17,14 +17,8 @@
        android:layout_marginTop="180dp"
         android:textSize="30dp"
         />
-    <Button
-        android:id="@+id/btn_contentProvider"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="ContentProvider"
-        android:layout_marginTop="80dp"
-        android:textSize="25dp"
-        />
+
+
 
 
 

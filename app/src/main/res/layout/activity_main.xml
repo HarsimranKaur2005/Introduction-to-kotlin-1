@@ -16,85 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/teal_700">
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:text="EMPLOYEE DATA"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="25dp"-->
-<!--            android:textStyle="bold" />-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-
-<!--            <TextView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:text="Enter Name: "-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="12dp" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/et_name"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:textColor="@color/white"-->
-<!--            android:textSize="12dp"-->
-
-<!--                />-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-
-<!--            <TextView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:text="Enter Adress: "-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="12dp" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/et_address"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="12dp" />-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-
-<!--            <TextView-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:text="Enter Phone No: "-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="12dp" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/et_Phone"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="12dp"/>-->
-<!--        </LinearLayout>-->
 
 
         <Button
@@ -104,7 +26,21 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:text="add data"
+            android:text="add data for room"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/btn_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:layout_marginLeft="20dp"
+            android:text="add data for Content Provider"
+            android:gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:textColor="@color/black" />
 
@@ -118,6 +54,22 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        />
+
+    <TextView
+        android:id="@+id/listContacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/black"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="319dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
