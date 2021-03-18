@@ -2,72 +2,90 @@ package com.example.webservice1
 
 import android.app.ProgressDialog
 import android.graphics.ColorSpace
+import android.graphics.LinearGradient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webservice1.Model.Model
+import com.example.webservice1.Model.ResponseModel
 import com.example.webservice1.Retrofit.ApiClient
+import com.example.webservice1.adapter.adapter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var progressDialog: ProgressDialog
-    lateinit var id:TextView
-    lateinit var title:TextView
-    lateinit var body:TextView
+    var arrayList = ArrayList<Model>()
+    private lateinit var myAdapter:adapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //set up the recycler view
+        setupRecyclerView()
+
         createProgressDialog()
 
-        var enterText = findViewById<EditText>(R.id.et_enterText)
-        var Submit  = findViewById<Button>(R.id.btn_submit)
-        id = findViewById(R.id.tv_id)
-        title = findViewById(R.id.tv_title)
-        body = findViewById(R.id.tv_body)
-
-        Submit.setOnClickListener(){
-            val text = enterText.text
-            if (text.isNullOrBlank() || text.toString().toInt() >10 || text.toString().toInt()<1)
-            {
-                enterText.error = "Value entered should be between 1-10"
-            } else{
-                progressDialog.show()
-                getData(text.toString().toInt())
-            }
+        btn_clickme.setOnClickListener(){
+            //get data
+            getData()
         }
+
+
+
+
+
     }
 
-    private fun getData(postId: Int) {
-    val call = ApiClient.getClient.getPost(postId)
-        call.enqueue(object : retrofit2.Callback<List<Model>>{
-            override fun onFailure(call: Call<List<Model>>, t: Throwable) {
-                Log.i("MainActivity", "Error is ${t.localizedMessage}")
-                Toast.makeText(this@MainActivity, "There is some error", Toast.LENGTH_SHORT).show()
+    /**
+     * setup the recycler veiw and
+     * attach adapter to it
+     */
+    private fun setupRecyclerView() {
+
+        //set the lyout for recyclerview
+
+        val linearLayout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager =linearLayout
+
+        myAdapter  = adapter(this, arrayList)
+        //attach adapter
+        recyclerView.adapter=myAdapter
+    }
+
+    private fun getData() {
+        progressDialog.show()
+
+        val call = ApiClient.getClient.getPosts()
+        call.enqueue(object : retrofit2.Callback<ResponseModel>{
+
+            override fun onFailure(call: retrofit2.Call<ResponseModel>, t: Throwable) {
+                //Log.d("MainActivity", "Error is ${t.message}")
+                Toast.makeText(this@MainActivity, "There is some error while getting post", Toast.LENGTH_SHORT).show()
                 progressDialog.dismiss()
             }
 
-            override fun onResponse(call: Call<List<Model>>, response: Response<List<Model>>) {
+            override fun onResponse(
+                call: retrofit2.Call<ResponseModel>,
+                response: Response<ResponseModel>
+            ) {
+                arrayList.addAll(response.body()?.posts?: ArrayList())
+                recyclerView.adapter!!.notifyDataSetChanged()
                 progressDialog.dismiss()
-                Log.d("MainActivity", "Data is ${response.body()}")
-                for (data in response.body()!!)
-                {
-                    id.text = "ID: ${data.postId.toString()}"
-                    title.text = "Title: ${data.postTitle.toString()}"
-                    body.text = "Body: ${data.postBody.toString()}"
-                }
-            }
+                //Log.d("MainActivity", "Data is ${responseModel.body()}")
 
+            }
 
         })
-
     }
 
     private fun createProgressDialog() {
@@ -76,3 +94,7 @@ class MainActivity : AppCompatActivity() {
         progressDialog.setMessage("Please wait for a while...")
         progressDialog.setCancelable(false)   }
 }
+
+
+
+
