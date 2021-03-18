@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         btn_clickme.setOnClickListener(){
 
             getPostsData()
-            btn_clickme.visibility=View.GONE
+
         }
 
     }
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getPostsData() {
+        btn_clickme.visibility=View.GONE
         progressDialog.show()
 
         val call = ApiClient.getClient.getPosts()
@@ -80,7 +81,9 @@ class MainActivity : AppCompatActivity() {
                 call: retrofit2.Call<ResponseModel>,
                 response: Response<ResponseModel>
             ) {
+
                 dataList.addAll(response.body()?.posts?: ArrayList())
+                Log.d("MainActivity", "data is :  ${dataList}\n\n")
                 recyclerView.adapter!!.notifyDataSetChanged()
                 progressDialog.dismiss()
                 //Log.d("MainActivity", "Data is ${responseModel.body()}")

@@ -49,6 +49,8 @@ class adapter(var context: Context, private val list : List<Model>): RecyclerVie
         Glide.with(context).load(profileImage).placeholder(R.drawable.ic_launcher_background)
             .into(holder.image)
 
+
     }
 
 }
+
