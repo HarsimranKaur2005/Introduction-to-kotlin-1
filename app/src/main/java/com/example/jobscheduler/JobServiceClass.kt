@@ -38,10 +38,11 @@ class JobServiceClass : JobService(){
             kotlin.run {
                 for (i in 1..15) {
                     //if job is cancelled then return
+                    if (jobCancelled){return@Runnable}
                     Log.d(TAG, "RUN: " + i)
                     //Toast.makeText(applicationContext, "run: $i" , Toast.LENGTH_SHORT).show()
 
-                    if (jobCancelled){return@Runnable}
+
 
                     try {
                         Thread.sleep(1000)
