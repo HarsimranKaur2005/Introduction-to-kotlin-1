@@ -6,6 +6,7 @@ import android.graphics.LinearGradient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webservice1.Model.Model
@@ -23,46 +24,47 @@ import retrofit2.Retrofit
 class MainActivity : AppCompatActivity() {
 
     lateinit var progressDialog: ProgressDialog
-    var arrayList = ArrayList<Model>()
-    private lateinit var myAdapter:adapter
+    var dataList = ArrayList<Model>()
+    private lateinit var customAdapter: adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //set up the recycler view
-        setupRecyclerView()
-
         createProgressDialog()
 
+        setupRecyclerView()
+
+
         btn_clickme.setOnClickListener(){
-            //get data
-            getData()
+
+            getPostsData()
+            btn_clickme.visibility=View.GONE
         }
 
-
-
-
-
     }
 
-    /**
-     * setup the recycler veiw and
-     * attach adapter to it
-     */
+    // Create progress dialog
+    private fun createProgressDialog() {
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading")
+        progressDialog.setMessage("Please wait while we are fetching post...")
+        progressDialog.setCancelable(false)
+    }
+
+    // Setup the recycler view
+    // and attach adapter to it
     private fun setupRecyclerView() {
+        // Set layout for RecyclerView
+        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = linearLayoutManager
 
-        //set the lyout for recyclerview
-
-        val linearLayout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.layoutManager =linearLayout
-
-        myAdapter  = adapter(this, arrayList)
-        //attach adapter
-        recyclerView.adapter=myAdapter
+        customAdapter = adapter(this, dataList)
+        // attach adapter
+        recyclerView.adapter = customAdapter
     }
 
-    private fun getData() {
+    private fun getPostsData() {
         progressDialog.show()
 
         val call = ApiClient.getClient.getPosts()
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 call: retrofit2.Call<ResponseModel>,
                 response: Response<ResponseModel>
             ) {
-                arrayList.addAll(response.body()?.posts?: ArrayList())
+                dataList.addAll(response.body()?.posts?: ArrayList())
                 recyclerView.adapter!!.notifyDataSetChanged()
                 progressDialog.dismiss()
                 //Log.d("MainActivity", "Data is ${responseModel.body()}")
@@ -87,14 +89,4 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-
-    private fun createProgressDialog() {
-        progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Loading")
-        progressDialog.setMessage("Please wait for a while...")
-        progressDialog.setCancelable(false)   }
 }
-
-
-
-
