@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="20dp"
+
+    >
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:padding="10dp"
+        android:background="@drawable/tictactoe"
+        android:layout_gravity="center_vertical">
+
+        <Button
+            android:tag="00"
+            android:layout_margin="5dp"
+            android:padding="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button"
+
+            />
+
+        <Button
+            android:tag="01"
+            android:padding="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+            android:background="@drawable/button"
+
+
+            />
+        <Button
+            android:tag="02"
+            android:padding="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+            android:background="@drawable/button"
+
+
+            />
+        <Button
+            android:tag="10"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button"
+
+
+
+            />
+        <Button
+            android:tag="11"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+            android:background="@drawable/button"
+
+            />
+        <Button
+            android:tag="12"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+            android:background="@drawable/button"
+
+            />
+        <Button
+            android:tag="20"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button"
+
+            />
+        <Button
+            android:tag="21"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+
+
+
+            />
+        <Button
+            android:tag="22"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="35dp"
+
+
+            />
+
+    </GridLayout>
+
+</LinearLayout>
