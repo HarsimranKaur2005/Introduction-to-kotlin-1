@@ -1,7 +1,7 @@
-package com.example.tictactoe.MVP.Presenter
+package com.example.tictactoe.mvp.mvp.Model.Presenter
 
-import com.example.tictactoe.MVP.mvp.Model.Board
-import com.example.tictactoe.MVP.View.TicTacToeView
+import com.example.tictactoe.mvp.mvp.Model.View.TicTacToeView
+import com.example.tictactoe.mvp.mvp.Model.model.Board
 
 class TicTacToePresenter():Presenter {
 

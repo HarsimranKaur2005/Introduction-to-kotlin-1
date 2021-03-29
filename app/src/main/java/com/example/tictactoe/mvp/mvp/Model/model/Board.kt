@@ -1,20 +1,23 @@
-package com.example.tictactoe.MVP.mvp.Model
+package com.example.tictactoe.mvp.mvp.Model.model
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 
 class Board {
 
 
 private val cells = Array(3){Array(3){" "} }
-    var winner:player?= null
+    var winner: player?= null
+    var mvvmWinner = MutableLiveData<player>()
     lateinit var currentTurn: player
-    lateinit var gameState:GameState
+    lateinit var gameState: GameState
 
 
 
     fun restart(){
         clearCells()
         winner= null
+        mvvmWinner.value=null
         currentTurn = player.X
         gameState = GameState.IN_PROGRESS
     }
@@ -40,7 +43,7 @@ and it will also check for winner
 
     fun mark(row: Int, col: Int): player? {
 
-        var playerThatMoved:player? = null
+        var playerThatMoved: player? = null
         if (isValid(row,col)){
             cells[row][col]= currentTurn.toString()
             Log.i("current", "$currentTurn ****")
@@ -49,6 +52,7 @@ and it will also check for winner
             if (isWinningMoveByPlayer(currentTurn, row, col))
             {
                 winner=currentTurn
+                mvvmWinner.value = currentTurn
                 gameState = GameState.FINISHED
 
             }
@@ -66,7 +70,7 @@ and it will also check for winner
     }
 
 
-     fun getGameWinner():player?{
+     fun getGameWinner(): player?{
         return winner
     }
     /**
@@ -75,9 +79,11 @@ and it will also check for winner
 
     private fun flipTurn() {
         if (currentTurn == player.X)
-        { currentTurn = player.O}
+        { currentTurn = player.O
+        }
         else
-        {currentTurn = player.X}
+        {currentTurn = player.X
+        }
     }
 
     /**

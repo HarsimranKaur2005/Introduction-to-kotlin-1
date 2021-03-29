@@ -1,4 +1,4 @@
-package com.example.tictactoe.MVP.View
+package com.example.tictactoe.mvp.mvp.Model.View
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tictactoe.MVP.Presenter.TicTacToePresenter
 import com.example.tictactoe.R
+import com.example.tictactoe.mvp.mvp.Model.Presenter.TicTacToePresenter
 
 class MainActivity : AppCompatActivity(), TicTacToeView,View.OnClickListener{
 
