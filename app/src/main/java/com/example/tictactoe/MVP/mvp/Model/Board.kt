@@ -1,4 +1,4 @@
-package com.example.tictactoe.Model
+package com.example.tictactoe.MVP.mvp.Model
 
 import android.util.Log
 
@@ -32,7 +32,11 @@ private val cells = Array(3){Array(3){" "} }
     }
 
 
-
+/*
+function will check if the cell is valid or not and if it is valid
+it will return the player to presenter and that will set at the cell
+and it will also check for winner
+ */
 
     fun mark(row: Int, col: Int): player? {
 
@@ -41,28 +45,29 @@ private val cells = Array(3){Array(3){" "} }
             cells[row][col]= currentTurn.toString()
             Log.i("current", "$currentTurn ****")
             playerThatMoved=currentTurn
-            
+
             if (isWinningMoveByPlayer(currentTurn, row, col))
             {
-
                 winner=currentTurn
                 gameState = GameState.FINISHED
+
             }
             else{
 
                 flipTurn()
             }
         }
+        return if (gameState == GameState.FINISHED){
+            winner
+        }
+        else
+            playerThatMoved
 
-        if(gameState == GameState.FINISHED)
-        {return null}
-else
-        return playerThatMoved!!
     }
 
 
-     fun getGameWinner():player{
-        return winner!!
+     fun getGameWinner():player?{
+        return winner
     }
     /**
      * function to flip the turn
@@ -112,15 +117,14 @@ else
      * @return boolean
      */
     fun isValid(row: Int, col: Int):Boolean{
-        if (gameState == GameState.FINISHED)
-        {return false}
+        return if (gameState == GameState.FINISHED)
+        { false}
+
         else
             if( isOutOfBound(row) || isOutOfBound(col))
-            {return false}
-            else if (isCellValueAlreadySet(row,col))
-            {return false}
-            else
-            {return true}
+            {false}
+            else !(isCellValueAlreadySet(row,col))
+
         }
 
 

@@ -1,14 +1,13 @@
-package com.example.tictactoe
+package com.example.tictactoe.MVP.View
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tictactoe.Presenter.TicTacToePresenter
-import com.example.tictactoe.View.TicTacToeView
+import com.example.tictactoe.MVP.Presenter.TicTacToePresenter
+import com.example.tictactoe.R
 
 class MainActivity : AppCompatActivity(), TicTacToeView,View.OnClickListener{
 

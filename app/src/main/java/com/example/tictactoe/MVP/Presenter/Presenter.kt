@@ -1,4 +1,4 @@
-package com.example.tictactoe.Presenter
+package com.example.tictactoe.MVP.Presenter
 
 interface Presenter {
 

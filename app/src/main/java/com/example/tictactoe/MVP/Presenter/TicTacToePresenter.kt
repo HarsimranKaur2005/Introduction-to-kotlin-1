@@ -1,9 +1,7 @@
-package com.example.tictactoe.Presenter
+package com.example.tictactoe.MVP.Presenter
 
-import android.view.ViewGroup
-import com.example.tictactoe.MainActivity
-import com.example.tictactoe.Model.Board
-import com.example.tictactoe.View.TicTacToeView
+import com.example.tictactoe.MVP.mvp.Model.Board
+import com.example.tictactoe.MVP.View.TicTacToeView
 
 class TicTacToePresenter():Presenter {
 
@@ -25,13 +23,13 @@ class TicTacToePresenter():Presenter {
         if (playerThatMoved !=null){
             view.setButtonText(row, col, playerThatMoved.toString())
 
-//            if (model.getGameWinner()!=null)
-//            {
-//                view.showWinner(playerThatMoved.toString())
-//            }
+            if (model.getGameWinner()!=null)
+            {
+                view.showWinner(playerThatMoved.toString())
+            }
 
         }
         else
-            view.showWinner(playerThatMoved.toString())
+            view.showWinner("Its a Draw match")
     }
 }

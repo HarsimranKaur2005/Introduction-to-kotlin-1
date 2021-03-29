@@ -1,4 +1,4 @@
-package com.example.tictactoe.Model
+package com.example.tictactoe.MVP.mvp.Model
 
 class cell {
     private var value:player?=null

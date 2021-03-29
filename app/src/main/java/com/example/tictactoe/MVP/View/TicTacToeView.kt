@@ -1,4 +1,4 @@
-package com.example.tictactoe.View
+package com.example.tictactoe.MVP.View
 
 interface TicTacToeView {
     fun setButtonText(row:Int, col:Int, text:String)

@@ -133,22 +133,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:visibility="gone">
-
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Winner is: "
+            android:textSize="30dp"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"/>
         <TextView
             android:id="@+id/winnerPlayerLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:layout_margin="10dp"
+            android:textColor="@color/black"
             tools:text="X" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="3dp"
-            android:text="winner" />
+
 
     </LinearLayout>
 
