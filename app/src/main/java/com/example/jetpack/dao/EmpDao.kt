@@ -9,7 +9,7 @@ import com.example.jetpack.database.EmpEntity
 interface EmpDao {
 
     @Query("Select * from emptable order by name asc")
-    fun getAllEmp(): List<EmpEntity>
+    fun getAllEmp(): LiveData<List<EmpEntity>>
 
     @Insert
     fun insertEmp(empEntity: EmpEntity)

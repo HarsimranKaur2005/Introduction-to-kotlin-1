@@ -12,41 +12,41 @@ import com.example.jetpack.dao.EmpDao
 abstract class RoomAppDb:RoomDatabase() {
     abstract fun empDao():EmpDao
 
-    companion object {
-        private var INSTANCE: RoomAppDb?= null
-
-        val migration_1_2: Migration = object: Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE userinfo ADD COLUMN phone TEXT DEFAULT ''")
-            }
-        }
-
-        fun getAppDatabase(context: Context): RoomAppDb? {
-
-            if (INSTANCE == null) {
-                synchronized(RoomAppDb::class) {
-                    INSTANCE =
-                        buildRoomDB(context)
-                }
-            }
-            return INSTANCE!!
-        }
-
-
-
-            private fun buildRoomDB(context: Context) =
-                Room.databaseBuilder(
-                    context.applicationContext,
-                    RoomAppDb::class.java,
-                    "roomdbexample"
-                ).fallbackToDestructiveMigration().build()
-
-
-
-        fun destroyInstance() {
-            INSTANCE = null
-        }
-    }
+//    companion object {
+//        private var INSTANCE: RoomAppDb?= null
+//
+//        val migration_1_2: Migration = object: Migration(1, 2) {
+//            override fun migrate(database: SupportSQLiteDatabase) {
+//                database.execSQL("ALTER TABLE userinfo ADD COLUMN phone TEXT DEFAULT ''")
+//            }
+//        }
+//
+//        fun getAppDatabase(context: Context): RoomAppDb? {
+//
+//            if (INSTANCE == null) {
+//                synchronized(RoomAppDb::class) {
+//                    INSTANCE =
+//                        buildRoomDB(context)
+//                }
+//            }
+//            return INSTANCE!!
+//        }
+//
+//
+//
+//            private fun buildRoomDB(context: Context) =
+//                Room.databaseBuilder(
+//                    context.applicationContext,
+//                    RoomAppDb::class.java,
+//                    "roomdbexample"
+//                ).fallbackToDestructiveMigration().build()
+//
+//
+//
+//        fun destroyInstance() {
+//            INSTANCE = null
+//        }
+//    }
 
 
 }

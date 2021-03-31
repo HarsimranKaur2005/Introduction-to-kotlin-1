@@ -11,10 +11,13 @@ import androidx.fragment.app.FragmentHostCallback
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.jetpack.ViewModel.EmpViewModel
 import com.example.jetpack.database.EmpEntity
 import kotlinx.android.synthetic.main.fragment_add_employee2.*
+import java.lang.reflect.Array.get
 import java.util.concurrent.Executors
 
 // TODO: Rename parameter arguments, choose names that match
@@ -48,7 +51,9 @@ class AddEmployee : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,6 +70,8 @@ class AddEmployee : Fragment() {
         /**
          * click on save button on fragment to add the data in database
          */
+
+        model= ViewModelProviders.of(this).get(EmpViewModel(activity?.application!!)::class.java)
         saveButton.setOnClickListener() {
             val name = nameInput.text.toString()
             val address = addressInput.text.toString()
@@ -83,23 +90,32 @@ class AddEmployee : Fragment() {
 
     private fun addData( name:String,  address:String,  phone:String) {
 
-        Executors.newSingleThreadExecutor().execute {
-            model= ViewModelProviders.of(this).get(EmpViewModel(activity!!.application)::class.java)
-            val mainActivity = activity as MainActivity
+//        Executors.newSingleThreadExecutor().execute {
+//
+//            val mainActivity = activity as MainActivity
+//
+//            if(saveButton.text.equals("Save")){
+//                val employee = EmpEntity(0,name,address, phone)
+//                model.InsertemployeeData(employee)
+//            }
+//            else{
+//                val employee = EmpEntity(nameInput.getTag(nameInput.id).toString().toInt(), name, address, phone)
+//                model.UpdateEmployee(employee)
+//                saveButton.setText("Save")
+//            }
+//            mainActivity.setModel()
+//
+//        }
 
-            if(saveButton.text.equals("Save")){
-                val employee = EmpEntity(0,name,address, phone)
-                model!!.InsertemployeeData(employee)
-            }
-            else{
-                val employee = EmpEntity(nameInput.getTag(nameInput.id).toString().toInt(), name, address, phone)
-                model!!.UpdateEmployee(employee)
-                saveButton.setText("Save")
-            }
-            mainActivity!!.setModel()
 
-        }
+        val application = activity!!.application
+        model.addEmployee(EmpEntity(
+                0,
+                name,
+                address,
+                phone
 
+        ))
 
     }
 

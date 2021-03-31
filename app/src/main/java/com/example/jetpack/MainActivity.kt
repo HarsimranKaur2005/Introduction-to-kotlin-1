@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        setRecyclerView()
+        setRecyclerView() //setUi
         setModel()
 
          frag = AddEmployee()
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         Executors.newSingleThreadExecutor().execute {
             model= ViewModelProviders.of(this).get(EmpViewModel(application)::class.java)
             runOnUiThread {
-                model!!.getAllEmpObserver().observe(this, Observer {
+                model!!.allEmp.observe(this, Observer {
 
                     fragment.visibility=View.INVISIBLE
                     recyclerView.visibility=View.VISIBLE
