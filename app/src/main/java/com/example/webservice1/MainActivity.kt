@@ -15,6 +15,10 @@ import com.example.webservice1.Retrofit.ApiClient
 import com.example.webservice1.adapter.adapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,28 +72,38 @@ class MainActivity : AppCompatActivity() {
         btn_clickme.visibility=View.GONE
         progressDialog.show()
 
-        val call = ApiClient.getClient.getPosts()
-        call.enqueue(object : retrofit2.Callback<ResponseModel>{
 
-            override fun onFailure(call: retrofit2.Call<ResponseModel>, t: Throwable) {
-                //Log.d("MainActivity", "Error is ${t.message}")
-                Toast.makeText(this@MainActivity, "There is some error while getting post", Toast.LENGTH_SHORT).show()
-                progressDialog.dismiss()
+        //coroutines launch
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = ApiClient.getClient.getPosts()
+
+            //to run on main coroutines
+            withContext(Dispatchers.Main){
+                call.enqueue(object : retrofit2.Callback<ResponseModel>{
+
+                    override fun onFailure(call: retrofit2.Call<ResponseModel>, t: Throwable) {
+                        //Log.d("MainActivity", "Error is ${t.message}")
+                        Toast.makeText(this@MainActivity, "There is some error while getting post", Toast.LENGTH_SHORT).show()
+                        progressDialog.dismiss()
+                    }
+
+                    override fun onResponse(
+                        call: retrofit2.Call<ResponseModel>,
+                        response: Response<ResponseModel>
+                    ) {
+
+                        dataList.addAll(response.body()?.posts?: ArrayList())
+                        Log.d("MainActivity", "data is :  ${dataList}\n\n")
+                        recyclerView.adapter!!.notifyDataSetChanged()
+                        progressDialog.dismiss()
+                        //Log.d("MainActivity", "Data is ${responseModel.body()}")
+
+                    }
+
+                })
             }
+        }
 
-            override fun onResponse(
-                call: retrofit2.Call<ResponseModel>,
-                response: Response<ResponseModel>
-            ) {
 
-                dataList.addAll(response.body()?.posts?: ArrayList())
-                Log.d("MainActivity", "data is :  ${dataList}\n\n")
-                recyclerView.adapter!!.notifyDataSetChanged()
-                progressDialog.dismiss()
-                //Log.d("MainActivity", "Data is ${responseModel.body()}")
-
-            }
-
-        })
     }
 }
