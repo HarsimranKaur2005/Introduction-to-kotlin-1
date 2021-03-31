@@ -5,7 +5,7 @@
     <data>
       <variable
           name="gameViewModel"
-          type="com.example.tictactoe.mvp.MVVM.TicTacToeViewModel"/>
+          type="com.example.tictactoe.mvp.mvvm.TicTacToeViewModel"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mvp.MVVM.MVVM_MainActivity"
+        tools:context=".mvp.mvvm.MVVM_MainActivity"
         android:padding="20dp"
         android:orientation="vertical"
         android:background="#D8D4D4"
@@ -166,10 +166,10 @@
                 android:id="@+id/winnerPlayerLabelmvvm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
+                android:textSize="20sp"
                 android:layout_margin="10dp"
                 android:textColor="@color/black"
-                tools:text="X" />
+                 />
 
 
 

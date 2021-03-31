@@ -1,4 +1,4 @@
-package com.example.tictactoe.mvp.MVVM
+package com.example.tictactoe.mvp.mvvm
 
 object StringUtility {
     fun stringFromNumbers(vararg numbers: Int): String {

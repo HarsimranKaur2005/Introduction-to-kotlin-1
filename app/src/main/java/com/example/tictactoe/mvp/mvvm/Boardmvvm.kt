@@ -1,13 +1,14 @@
-package com.example.tictactoe.mvp.mvp.Model.model
+package com.example.tictactoe.mvp.mvvm
 
 import androidx.lifecycle.MutableLiveData
+import com.example.tictactoe.mvp.mvp.Model.model.GameState
+import com.example.tictactoe.mvp.mvp.Model.model.player
 
-class Board {
+class Boardmvvm {
 
-
-private val cells = Array(3){Array(3){" "} }
+    private val cells = Array(3){Array(3){" "} }
     var winner: player?= null
-    var mvvmWinner:MutableLiveData<player> = MutableLiveData()
+    var mvvmWinner: MutableLiveData<player> = MutableLiveData()
     lateinit var currentTurn: player
     lateinit var gameState: GameState
 
@@ -50,10 +51,10 @@ and it will also check for winner
 
             if (isWinningMoveByPlayer(currentTurn, row, col))
             {
-                winner=currentTurn
+
                 mvvmWinner.value= currentTurn
 
-              //  Log.i("current", "${mvvmWinner.value} ****")
+                //  Log.i("current", "${mvvmWinner.value} ****")
                 gameState = GameState.FINISHED
 
             }
@@ -63,21 +64,19 @@ and it will also check for winner
             }
         }
         return if (gameState == GameState.FINISHED){
-            winner
+            mvvmWinner.value
         }
         else
             playerThatMoved
 
     }
 
-    fun getMVVMWinner():player?{
-        return mvvmWinner?.value
+    fun getMVVMWinner(): player?{
+        return mvvmWinner.value
     }
 
 
-     fun getGameWinner(): player?{
-        return winner
-    }
+
     /**
      * function to flip the turn
      */
@@ -98,10 +97,10 @@ and it will also check for winner
     private fun isWinningMoveByPlayer(player: player, currentRow: Int, currentCol: Int): Boolean {
 
         return ((
-        // 3 -in-a row
+                // 3 -in-a row
                 cells[currentRow][0] == player.toString()
-                && cells[currentRow][1]== player.toString()
-                && cells[currentRow][2]== player.toString())
+                        && cells[currentRow][1]== player.toString()
+                        && cells[currentRow][2]== player.toString())
 
                 // or 3-in-a column
                 ||(cells[0][currentCol]== player.toString()
@@ -136,7 +135,7 @@ and it will also check for winner
             {false}
             else !(isCellValueAlreadySet(row,col))
 
-        }
+    }
 
 
 
@@ -155,5 +154,6 @@ and it will also check for winner
     private fun isOutOfBound(row: Int): Boolean {
         return (row<0 || row>2)
     }
+
 
 }

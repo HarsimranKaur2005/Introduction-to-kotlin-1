@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoe.R
-import com.example.tictactoe.mvp.MVVM.MVVM_MainActivity
+import com.example.tictactoe.mvp.mvvm.MVVM_MainActivity
 import com.example.tictactoe.mvp.mvp.Model.View.MainActivity
 import kotlinx.android.synthetic.main.activity_launcher.*
 
