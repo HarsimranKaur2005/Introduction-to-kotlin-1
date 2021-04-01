@@ -1,5 +1,6 @@
 package com.example.tictactoe.mvp.mvvm
 
+import android.util.Log
 import androidx.databinding.ObservableArrayMap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,10 +38,11 @@ class TicTacToeViewModel : ViewModel(){
     }
 
     fun getWinner(): MutableLiveData<player> {
-       if (board.getMVVMWinner() == null){
-           board.restart()
-       }
+        Log.i("current", "simmy ****")
         return board.mvvmWinner
     }
+
+
+
     }
 

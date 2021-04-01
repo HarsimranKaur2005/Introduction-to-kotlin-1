@@ -1,13 +1,11 @@
 package com.example.tictactoe.mvp.mvp.Model.model
 
-import androidx.lifecycle.MutableLiveData
-
 class Board {
 
 
 private val cells = Array(3){Array(3){" "} }
     var winner: player?= null
-    var mvvmWinner:MutableLiveData<player> = MutableLiveData()
+
     lateinit var currentTurn: player
     lateinit var gameState: GameState
 
@@ -16,7 +14,7 @@ private val cells = Array(3){Array(3){" "} }
     fun restart(){
         clearCells()
         winner= null
-        mvvmWinner.value=null
+
         currentTurn = player.X
         gameState = GameState.IN_PROGRESS
     }
@@ -51,7 +49,7 @@ and it will also check for winner
             if (isWinningMoveByPlayer(currentTurn, row, col))
             {
                 winner=currentTurn
-                mvvmWinner.value= currentTurn
+
 
               //  Log.i("current", "${mvvmWinner.value} ****")
                 gameState = GameState.FINISHED
@@ -70,9 +68,7 @@ and it will also check for winner
 
     }
 
-    fun getMVVMWinner():player?{
-        return mvvmWinner?.value
-    }
+
 
 
      fun getGameWinner(): player?{

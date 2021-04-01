@@ -1,5 +1,6 @@
 package com.example.tictactoe.mvp.mvvm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.tictactoe.mvp.mvp.Model.model.GameState
 import com.example.tictactoe.mvp.mvp.Model.model.player
@@ -17,7 +18,7 @@ class Boardmvvm {
     fun restart(){
         clearCells()
         winner= null
-        mvvmWinner.value=null
+//        mvvmWinner.value=null
         currentTurn = player.X
         gameState = GameState.IN_PROGRESS
     }
@@ -54,7 +55,7 @@ and it will also check for winner
 
                 mvvmWinner.value= currentTurn
 
-                //  Log.i("current", "${mvvmWinner.value} ****")
+                  Log.i("current", "${mvvmWinner.value} ****")
                 gameState = GameState.FINISHED
 
             }
