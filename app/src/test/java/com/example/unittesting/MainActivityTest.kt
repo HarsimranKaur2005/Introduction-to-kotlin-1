@@ -8,28 +8,27 @@ import org.mockito.Mock
 
 class MainActivityTest {
 
-
     @Test
-    fun emailIsEmpty() {
-        val email = MainActivity().EmailIsEmpty("")
-        Assert.assertTrue(email)
-    }
-
-    @Test
-    fun TestisValidate() {
-        var result = MainActivity().isValidate("abc@gmail.com")
+    fun testEmailisValid(){
+        val email = "simmy@gmail.com"
+        val result = MainActivity().isEmailValid(email)
         Assert.assertTrue(result)
     }
+    
+
+
 
     @Test
     fun TestEmailContainDot() {
-        var result = MainActivity().EmailContainDot("abc@gmail.com")
+        val email = "simmy@gmail.com"
+        val result = MainActivity().isEmailValid(email)
         Assert.assertTrue(result)
     }
 
     @Test
     fun TestEmailstartsWith() {
-        var result = MainActivity().EmailContainDot("abc@gmail.com")
+        val email = "simmy@gmail.com"
+        val result = MainActivity().isEmailValid(email)
         Assert.assertTrue(result)
     }
 }

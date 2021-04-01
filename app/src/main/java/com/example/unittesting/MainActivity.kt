@@ -14,41 +14,49 @@ class MainActivity : AppCompatActivity() {
         email = et_email.text.toString()
 
         btnValidate.setOnClickListener(){
-            isValidate(email)
+            isEmailValid(email)
         }
 
     }
 
-     fun isValidate(email: String):Boolean {
-        if (EmailIsValid(email))
+    /**
+     * Requirements to check:-
+     * 1) Email should contain @ and .
+     * 2)Email must not be blank
+     * 3)Email must not contain hyphen(-)
+     * 4)Email must not start with underscore(_) or @
+     */
+     fun isEmailValid(email: String):Boolean {
+         if(email.contains(" "))
             return false
-        else if(EmailIsEmpty(email))
+         else if (!(email.contains("@") && email.contains(".")))
             return false
-         else if(!EmailContainDot(email))
+
+         else if(email.contains("-"))
          return false
-         else if(EmailStartWith(email))
+         else if(email.startsWith("@") || email.startsWith("_"))
             return false
-         else 
-            return true
+
+         return true
     }
 
 
 
-    fun EmailStartWith(email: String): Boolean {
-         return !email.startsWith("@")
-    }
-
-    fun EmailContainDot(email: String): Boolean {
-        return email.contains(".")
-
-    }
-
-    fun EmailIsEmpty(email:String):Boolean {
-        return email != null
-    }
-    fun EmailIsValid(email: String):Boolean{
-        return !(!email.contains("@") && !(email.contains(".")))
-    }
+//    fun EmailStartWith(email: String): Boolean {
+//         return !email.startsWith("@")
+//    }
+//
+//    fun EmailContainDot(email: String): Boolean {
+//        return email.contains(".")
+//
+//    }
+//
+//    fun EmailIsEmpty(email:String):Boolean {
+//        return email != null
+//    }
+//    fun EmailIsValid(email: String):Boolean{
+//        return !(!email.contains("@") && !(email.contains(".")))
+//    }
 
 
 }
