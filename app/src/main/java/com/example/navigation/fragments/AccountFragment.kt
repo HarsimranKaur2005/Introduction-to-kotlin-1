@@ -10,11 +10,16 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.navigation.MainActivity
 import com.example.navigation.R
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class AccountFragment : Fragment() {
+
+    lateinit var firebaseAnalytics: FirebaseAnalytics
 
 
     override fun onCreateView(
@@ -25,11 +30,24 @@ class AccountFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        firebaseAnalytics = Firebase.analytics
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        logScreenEvent()
         checkLogin()
         getSharedPref()
         setListeners()
+    }
+
+    private fun logScreenEvent() {
+        val eventName = "screen_opened"
+        val bundle = Bundle().apply {
+            putString("Screen_name",AccountFragment::class.java.simpleName)
+        }
+        firebaseAnalytics.logEvent(eventName,bundle)
     }
 
     /**

@@ -13,6 +13,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.navigation.MainActivity
 import com.example.navigation.R
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -22,6 +25,7 @@ class HomeFragment : Fragment() {
     private val NAME_KEY = MainActivity.NAME_KEY
     private lateinit var navController: NavController
     private val TAG = HomeFragment::class.java.simpleName
+    lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +39,13 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        firebaseAnalytics = Firebase.analytics
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        logScreenEvent()
         navController = findNavController()
         checkLogin()
         setListeners()
@@ -43,8 +53,25 @@ class HomeFragment : Fragment() {
                 ?.observe(viewLifecycleOwner, Observer {
                     // Do something with result
                     Log.i(TAG, "Description is $it")
+                    logDescriptionUpdatesEvent()
                     updateUIForDescription(it)
                 })
+    }
+
+    private fun logScreenEvent() {
+        val eventName = "screen_opened"
+        val bundle = Bundle().apply {
+            putString("Screen_name",HomeFragment::class.java.simpleName)
+        }
+        firebaseAnalytics.logEvent(eventName,bundle)
+    }
+
+    private fun logDescriptionUpdatesEvent() {
+        val eventName = "description_updates"
+        val bundle = Bundle().apply {
+            putString("decription_changed","yes")
+        }
+        firebaseAnalytics.logEvent(eventName,bundle)
     }
 
     private fun updateUIForDescription(description: String) {

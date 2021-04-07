@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
+    // Apply the Crashlytics Gradle plugin
+    id 'com.google.firebase.crashlytics'
 }
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
@@ -53,4 +56,11 @@ android {
         implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
         implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
         //classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+        // Firebase Analytics
+        implementation platform('com.google.firebase:firebase-bom:26.8.0')
+        // Declare the dependencies for the Crashlytics and Analytics libraries
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+        implementation 'com.google.firebase:firebase-analytics-ktx'
+        implementation 'com.google.firebase:firebase-crashlytics-ktx'
     }
