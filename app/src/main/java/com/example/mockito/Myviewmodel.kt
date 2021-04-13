@@ -1,29 +1,27 @@
 package com.example.mockito
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
-class Myviewmodel:ViewModel() {
+class Myviewmodel(application: Application):AndroidViewModel(application) {
 
-    private  var ischecked:MutableLiveData<Boolean>
-    var repo = myRepository()
+    private val context = getApplication<Application>().applicationContext
+    private val myRepo:MyRepository = MyRepository(context)
+      var isItemchecked:MutableLiveData<Boolean> = myRepo.getCheckedItem()
+    private val TAG = Myviewmodel::class.java.simpleName
 
-    init {
 
-        ischecked = MutableLiveData()
+    fun UncheckItem(){
+        myRepo.UncheckItem()
+        isItemchecked.value=myRepo.getCheckedItem().value
+
     }
 
-    fun check(ischecked: Boolean): Boolean {
-        var check = repo.check(ischecked)
-        if (check == true)
-            return false
-        else
-            return true
+    fun CheckItem(favItem:MyDataclass){
+        myRepo.saveitem(favItem)
+        isItemchecked.value=myRepo.getCheckedItem().value
     }
 
-   fun getData():MutableLiveData<Boolean> {
-       Log.i("checkValue", "viewmodel: "+ (repo.checked).toString())
-        return repo.checked
-    }
 }

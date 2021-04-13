@@ -12,24 +12,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       model= ViewModelProviders.of(this).get(Myviewmodel::class.java)
+        val application = this.application
+       model= ViewModelProviders.of(this).get(Myviewmodel(application)::class.java)
 //       /
-        model.getData().observe(this, Observer {
-                data:Boolean?-> ischeckbox(data)
+        model.isItemchecked.observe(this, Observer {
+            checkboxch.isChecked = it
         })
-    }
 
-    private fun ischeck() {
+        setUIListeners()
 
-
-
-    }
-
-    private fun ischeckbox(data: Boolean?) {
-        if (data!!)
-            checkbox.isChecked = false
-        else
-            checkbox.isChecked = true
-
-    }
 }
+
+    private fun setUIListeners() {
+        buttonme.setOnClickListener()
+        {
+            if (checkboxch.isChecked){
+              model.UncheckItem()
+            }
+            else{
+
+                model.CheckItem(MyDataclass(textView.text.toString(), true))
+
+            }
+        }
+    }
+    }
